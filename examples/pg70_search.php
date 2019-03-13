@@ -20,25 +20,17 @@ function search($pat, $txt)
   
     // countP[]:  Store count of all characters of pattern 
     // countTW[]: Store count of current window of text 
-    $countP = [0]*MAX;
-    $countTW = [0]*MAX; 
+    $countP = [];
+    $countTW = []; 
+    for ($i = 0; $i < MAX; $i++) 
+    { 
+        $countP[$i] = 0;
+        $countTW[$i] = 0; 
+    }
     for ($i = 0; $i < $M; $i++) 
     { 
-        $patiOrd = ord($pat[$i]);
-        $txtiOrd = ord($txt[$i]);
-        
-        if(isset($countP[$patiOrd]))
-        {
-            $countP[$patiOrd]++;
-        } else{
-            $countP[$patiOrd] = 0;
-        }
-        if(isset($countTW[$txtiOrd]))
-        {
-            $countTW[$txtiOrd]++;
-        } else{
-            $countP[$patiOrd] = 0;
-        } 
+        $countP[ord($pat[$i])]++; 
+        $countTW[ord($txt[$i])]++; 
     } 
   
     // Traverse through remaining characters of pattern 
@@ -47,26 +39,19 @@ function search($pat, $txt)
         // Compare counts of current window of text with 
         // counts of pattern[] 
         if (compare($countP, $countTW)){ 
-            echo "Found at Index " . $i - $M . "\n";
+            echo "Found at Index " . ($i - $M) . "\n";
         }
   
         // Add current character to current window 
-        $txtiOrd = ord($txt[$i]);
-        if(isset($countTW[$txtiOrd]))
-        {
-            $countTW[$txtiOrd]++;
-        } else{
-            $countTW[$txtiOrd] = 0;
-        }
+        $countTW[ord($txt[$i])]++; 
   
-        $txtiMDifOrd = ord($txt[$i-$M]);
         // Remove the first character of previous window 
-        $countTW[$txtiMDifOrd]--; 
+        $countTW[ord($txt[$i-$M])]--; 
     } 
   
     // Check for the last window in text 
     if (compare($countP, $countTW)) {
-        echo "Found at Index " . $N - $M . "\n";
+        echo "Found at Index " . ($N - $M) . "\n";
     }
 } 
 
