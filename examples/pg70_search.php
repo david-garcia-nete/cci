@@ -8,8 +8,8 @@ function compare($arr1, $arr2)
         if ($arr1[$i] != $arr2[$i]){ 
             return false; 
         }
-        return true; 
     }
+    return true; 
 } 
   
 // This function search for all permutations of pat[] in txt[] 
@@ -46,7 +46,7 @@ function search($pat, $txt)
         $countTW[ord($txt[$i])]++; 
   
         // Remove the first character of previous window 
-        $countTW[ord($txt[$i-$M])]--; 
+        $countTW[ord($txt[($i-$M)])]--; 
     } 
   
     // Check for the last window in text 
