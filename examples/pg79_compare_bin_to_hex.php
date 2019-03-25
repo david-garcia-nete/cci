@@ -66,4 +66,4 @@ function digitToValue($c){
     }
 }
 
-compareBinToHex('1111', 'F');
+echo compareBinToHex('1111', 'F');
