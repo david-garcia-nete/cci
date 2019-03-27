@@ -9,14 +9,14 @@ class ComposerStaticInitc26a88ac0de0db66cf6774cda7505b70
     public static $prefixLengthsPsr4 = array (
         'C' => 
         array (
-            'Cci\\Util\\' => 9,
+            'Cci\\' => 4,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Cci\\Util\\' => 
+        'Cci\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/examples/Util',
+            0 => __DIR__ . '/../..' . '/examples',
         ),
     );
 

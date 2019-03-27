@@ -8,7 +8,7 @@
 
 
 
-namespace Cci;
+//namespace Cci;
 
 include __DIR__ . '/../vendor/autoload.php';
 
