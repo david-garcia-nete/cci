@@ -80,7 +80,7 @@ class customException extends Exception {
   public function errorMessage() {
     //error message
     $errorMsg = 'Error on line '.$this->getLine().' in '.$this->getFile()
-    .': '.$this->getMessage();
+    .': '.$this->getMessage() . "\n" . $this->getTraceAsString();
     return $errorMsg;
   }
 }
