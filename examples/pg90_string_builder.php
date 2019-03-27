@@ -6,6 +6,15 @@
  * and open the template in the editor.
  */
 
+
+
+namespace Cci;
+
+include __DIR__ . '/../vendor/autoload.php';
+
+use Cci\Util\ArgumentValidator;
+use Cci\Util\CustomException;
+
 class StringBuilder {
 
     /**
@@ -61,29 +70,9 @@ class StringBuilder {
 
 }
 
-class ArgumentValidator {
 
-    /**
-     * @param mixed $value
-     * @throws \InvalidArgumentException
-     */
-    public static function validateScalar($value) {
-        if (!is_scalar($value)) {
-            $type = is_object($value) ? get_class($value) : gettype($value);
-            throw new customException('Expected a scalar value; got ' . $type);
-        }
-    }
 
-}
 
-class customException extends Exception {
-  public function errorMessage() {
-    //error message
-    $errorMsg = 'Error on line '.$this->getLine().' in '.$this->getFile()
-    .': '.$this->getMessage() . "\n" . $this->getTraceAsString();
-    return $errorMsg;
-  }
-}
 
 $builder = new StringBuilder('first');
 
@@ -92,7 +81,7 @@ try {
             ->append('a')
             ->append('12')
             ->append([]);
-} catch (customException $e) {
+} catch (CustomException $e) {
 
     echo 'Message: ' . $e->errorMessage();
 }

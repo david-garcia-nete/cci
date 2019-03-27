@@ -1,0 +1,7 @@
+{
+    "autoload": {
+        "psr-4": {
+          "Cci\\Util\\": "examples/Util"
+        }
+    }
+}
