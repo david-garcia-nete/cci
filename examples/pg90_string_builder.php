@@ -9,7 +9,7 @@
 class StringBuilder
 {
 	/**
-	 * @var string
+	 * @var array
 	 */
 	private $string;
 	/**
@@ -24,7 +24,7 @@ class StringBuilder
 	{
 		if ($string !== null) {
 			ArgumentValidator::validateScalar($string);
-			$this->string = (string)$string;
+			$this->string[] = $string;
 		}
 	}
 	/**
@@ -37,7 +37,7 @@ class StringBuilder
 	public function append($string)
 	{
 		ArgumentValidator::validateScalar($string);
-		$this->string .= (string)$string;
+		$this->string[]= $string;
 		return $this;
 	}
 	
@@ -48,7 +48,7 @@ class StringBuilder
 	 */
 	public function build()
 	{
-		return $this->string;
+		return implode('', $this->string);
 	}
 	/**
 	 * Returns the whole resulting string
@@ -75,7 +75,7 @@ class ArgumentValidator{
 	}
 }
 
-$builder = new StringBuilder();
+$builder = new StringBuilder('first');
 $builder
         ->append('a')
         ->append('12')
