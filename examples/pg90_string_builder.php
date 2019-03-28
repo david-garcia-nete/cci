@@ -6,10 +6,6 @@
  * and open the template in the editor.
  */
 
-
-
-//namespace Cci;
-
 include __DIR__ . '/../vendor/autoload.php';
 
 use Cci\Util\ArgumentValidator;
