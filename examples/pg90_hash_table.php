@@ -34,26 +34,26 @@ class Map {
     // empty chains. 
     public function __construct() {
     
-    $bucketArray = []; 
-    $numBuckets = 10; 
-    $size = 0;     
+    $this->bucketArray = []; 
+    $this->numBuckets = 10; 
+    $this->size = 0;     
         
     // Create empty chains 
-    for ($i = 0; $i < $numBuckets; $i++) 
-        $bucketArray[$i] = null;
+    for ($i = 0; $i < $this->numBuckets; $i++) 
+        $this->bucketArray[$i] = null;
     
     }
     
-    public function size() { return $size; } 
+    public function size() { return $this->size; } 
     
-    public function isEmpty() { return size() == 0; }
+    public function isEmpty() { return $this->size() == 0; }
     
     // This implements hash function to find index 
     // for a key 
     private function getBucketIndex($key) 
     { 
         $hashCode = crc32($key);
-        $index = $hashCode % $numBuckets; 
+        $index = $hashCode % $this->numBuckets; 
         return $index; 
     } 
     
@@ -64,7 +64,7 @@ class Map {
         $bucketIndex = $this->getBucketIndex($key); 
   
         // Get head of chain 
-        $head = $bucketArray->get($bucketIndex); 
+        $head = $this->bucketArray[$bucketIndex]; 
   
         // Search for key in its chain 
         $prev = null; 
@@ -84,7 +84,7 @@ class Map {
             return null; 
   
         // Reduce size 
-        $size--; 
+        $this->size--; 
   
         // Remove key 
         if ($prev != null) 
@@ -119,7 +119,7 @@ class Map {
     { 
         // Find head of chain for given key 
         $bucketIndex = $this->getBucketIndex($key); 
-        $head = $bucketArray->get($bucketIndex); 
+        $head = $this->bucketArray[$bucketIndex]; 
   
         // Check if key is already present 
         while ($head != null) 
@@ -133,22 +133,22 @@ class Map {
         } 
   
         // Insert key in chain 
-        $size++; 
-        $head = $bucketArray->get($bucketIndex); 
+        $this->size++; 
+        $head = $this->bucketArray[$bucketIndex]; 
         $newNode = new HashNode($key, $value); 
         $newNode->next = $head; 
-        $bucketArray->set($bucketIndex, $newNode); 
+        $this->bucketArray[$bucketIndex] = $newNode; 
   
         // If load factor goes beyond threshold, then 
         // double hash table size 
-        if ((1.0*$size)/$numBuckets >= 0.7) 
+        if ((1.0*$this->size)/$this->numBuckets >= 0.7) 
         { 
-            $temp = $bucketArray; 
-            $bucketArray = []; 
+            $temp = $this->bucketArray; 
+            $this->bucketArray = []; 
             $numBuckets = 2 * $numBuckets; 
             $size = 0; 
             for ($i = 0; $i < $numBuckets; $i++) 
-                $bucketArray->add(null); 
+                $this->bucketArray[$i] = null; 
   
             foreach ($temp as $headNode) 
             { 
@@ -165,10 +165,10 @@ class Map {
 
 // unit test
 $map = new Map(); 
-$map.add("this",1 ); 
-$map.add("coder",2 ); 
-$map.add("this",4 ); 
-$map.add("hi",5 ); 
+$map->add("this",1 ); 
+$map->add("coder",2 ); 
+$map->add("this",4 ); 
+$map->add("hi",5 ); 
 echo $map->size(); 
 echo $map->remove("this"); 
 echo $map->remove("this"); 
