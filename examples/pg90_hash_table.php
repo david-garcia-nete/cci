@@ -46,6 +46,8 @@ class Map {
     
     public function size() { return $this->size; } 
     
+    public function numBuckets() { return $this->numBuckets; } 
+    
     public function isEmpty() { return $this->size() == 0; }
     
     // This implements hash function to find index 
@@ -90,7 +92,7 @@ class Map {
         if ($prev != null) 
             $prev->next = $head->next; 
         else
-            $bucketArray->set($bucketIndex, $head->next); 
+            $this->bucketArray[$bucketIndex] = $head->next; 
   
         return $head->value; 
     } 
@@ -145,9 +147,9 @@ class Map {
         { 
             $temp = $this->bucketArray; 
             $this->bucketArray = []; 
-            $numBuckets = 2 * $numBuckets; 
+            $this->numBuckets = 2 * $this->numBuckets; 
             $size = 0; 
-            for ($i = 0; $i < $numBuckets; $i++) 
+            for ($i = 0; $i < $this->numBuckets; $i++) 
                 $this->bucketArray[$i] = null; 
   
             foreach ($temp as $headNode) 
@@ -173,4 +175,18 @@ echo $map->size() . "\n";
 echo $map->remove("this") . "\n"; 
 echo $map->remove("this") . "\n"; 
 echo $map->size() . "\n"; 
+echo $map->isEmpty() . "\n"; 
+$map->add("that",5 ); 
+$map->add("musician",6 ); 
+$map->add("over",7 ); 
+$map->add("bye",8 );
+$map->add("me",3 ); 
+$map->add("you",4 ); 
+$map->add("why",10 ); 
+$map->add("nice",11 );
+echo $map->size() . "\n"; 
+echo $map->remove("that") . "\n"; 
+echo $map->remove("that") . "\n"; 
+echo $map->size() . "\n"; 
+echo $map->numBuckets() . "\n";
 echo $map->isEmpty() . "\n"; 
