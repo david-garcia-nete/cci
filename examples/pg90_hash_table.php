@@ -13,9 +13,9 @@ class HashNode {
     public $next;
 
     // Constructor 
-    public function __construct($key, $val) {
+    public function __construct($key, $value) {
             $this->key = $key;
-            $this->val = $val;
+            $this->value = $value;
     }
 }
 // Class to represent entire hash table 
