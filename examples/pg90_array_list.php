@@ -17,7 +17,14 @@ public function __construct() {
     
 }
 
-
+public function add($anEntry){
+    if($this->size == $this->capacity){
+        $this->reallocate();
+    }
+    $this->theData[$this->size] = $anEntry;
+    $this->size++;
+    return true;
+}
 
 
     
