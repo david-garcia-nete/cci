@@ -11,7 +11,6 @@ public function __construct() {
     
     $this->capacity = INITIAL_CAPACITY; 
         
-    // Create empty chains 
     for ($i = 0; $i < $this->capacity; $i++) 
         $this->theData[$i] = null;
     
@@ -41,5 +40,40 @@ public function addAtIndex($index, $anEntry){
     $this->size++; 
 }
 
+public function get ($index){
+    if($index < 0 || $index > $this->size){
+        throw new OutOfBoundsException($index); //Can I pass an int?  Test this. 
+    } 
+    return $this->theData[$index];
+}
+
+public function set ($index, $newValue){
+    if($index < 0 || $index > $this->size){
+        throw new OutOfBoundsException($index); //Can I pass an int?  Test this. 
+    } 
+    $oldValue = $this->theData[$index];
+    $this->theData[$index] = $newValue;
+    return $oldValue;
+}
+
+public function remove ($index){
+    if($index < 0 || $index > $this->size){
+        throw new OutOfBoundsException($index); //Can I pass an int?  Test this. 
+    }
+    $returnValue = $this->theData[$index];
+    for($i = $index + 1; $i<$this->size;$i++ ){
+        $this->theData[$i-1] = $this->theData[$i];
+    }
+    $this->size--;
+    return $returnValue;  
+}
+
+private function reallocate(){
+    $this->capacity = 2 * $this->capacity;
+    $newData = [];
+    for ($i = 0; $i < $this->capacity; $i++) 
+        $this->theData[$i] = null;
+    
+}
     
 }
