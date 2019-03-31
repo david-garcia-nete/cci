@@ -59,6 +59,8 @@ public function set ($index, $newValue){
 public function remove ($index){
     if($index < 0 || $index > $this->size){
         throw new OutOfBoundsException($index); //Can I pass an int?  Test this. 
+        
+        
     }
     $returnValue = $this->theData[$index];
     for($i = $index + 1; $i<$this->size;$i++ ){
@@ -71,8 +73,11 @@ public function remove ($index){
 private function reallocate(){
     $this->capacity = 2 * $this->capacity;
     $newData = [];
-    for ($i = 0; $i < $this->capacity; $i++) 
-        $this->theData[$i] = null;
+    for ($i = 0; $i < $this->size + 1; $i++) 
+        $newData[$i] = $this->theData[$i];
+    for ($i = $this->size + 1; $i < $this->capacity; $i++) 
+        $newData[$i] = null;
+    $this->theData = $newData;
     
 }
     
