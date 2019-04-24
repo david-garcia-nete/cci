@@ -16,7 +16,7 @@ class MatrixRotator {
 
                             for($i = $first; $i < $last; $i++) {
 
-                                    $offset = $i - $first;
+                                    $offset = $i - $first; // index - layer = how far in we are 
 
                                     $top = $matrix[$first][$i]; // save top
 
@@ -24,7 +24,7 @@ class MatrixRotator {
 
                                     // left -> top
 
-                                    $matrix[$first][$i] = $matrix[$last-$offset][$first]; 			
+                                    $matrix[$first][$i] = $matrix[$last-$offset][$first]; // last -offset = we don't want to access previously visited cells			
 
 
 
@@ -36,7 +36,7 @@ class MatrixRotator {
 
                                     // right -> bottom
 
-                                    $matrix[$last][$last - $offset] = $matrix[$i][$last]; 
+                                    $matrix[$last][$last - $offset] = $matrix[$i][$last]; // $matrix[$i][$last] we're using the inner loop to get the row on the right
 
 
 
