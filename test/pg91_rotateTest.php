@@ -6,8 +6,6 @@
  * and open the template in the editor.
  */
 
-include __DIR__ . '/../vendor/autoload.php';
-
 require_once __DIR__ . '/../examples/pg91_rotate.php';
 
 class MatrixRotatorTest extends \PHPUnit\Framework\TestCase {
