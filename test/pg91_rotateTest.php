@@ -98,3 +98,15 @@ class MatrixRotatorTest extends \PHPUnit\Framework\TestCase {
         $this->assertEquals($expected, $matrix);
     }
 }
+
+
+$MatrixRotatorTest = new MatrixRotatorTest();
+
+$MatrixRotatorTest->testRotate1x1Matrix();
+$MatrixRotatorTest->testRotate2x2Matrix();
+$MatrixRotatorTest->testRotate3x3Matrix();
+$MatrixRotatorTest->testRotate4x4Matrix();
+$MatrixRotatorTest->testRotate5x5Matrix();
+$MatrixRotatorTest->testRotate6x6Matrix();
+
+
