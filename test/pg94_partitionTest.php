@@ -55,11 +55,59 @@ class LinkedListPartitionerTest extends \PHPUnit\Framework\TestCase {
         }
         $this->assertEquals(count($this->values), $nodeCount);
     }
+    public function testPartitionCci() {
+        $x = 5;
+        $node = LinkedListPartitioner::partitionCci($this->linkedList, $x);
+        $beforePartition = true;
+        $nodeCount = 0;
+        while ($node !== null) {
+            $data = $node->getData();
+            if ($beforePartition && $data >= $x) {
+                $beforePartition = false;
+            }
+            if ($beforePartition) {
+                $this->assertTrue($data < $x);
+            } else {
+                $this->assertTrue($data >= $x);
+            }
+            $node = $node->getNext();
+            $nodeCount++;
+        }
+        $this->assertEquals(count($this->values), $nodeCount);
+    }
+    public function testPartitionCci2() {
+        $x = 5;
+        $node = LinkedListPartitioner::partitionCci2($this->linkedList, $x);
+        $beforePartition = true;
+        $nodeCount = 0;
+        while ($node !== null) {
+            $data = $node->getData();
+            if ($beforePartition && $data >= $x) {
+                $beforePartition = false;
+            }
+            if ($beforePartition) {
+                $this->assertTrue($data < $x);
+            } else {
+                $this->assertTrue($data >= $x);
+            }
+            $node = $node->getNext();
+            $nodeCount++;
+        }
+        $this->assertEquals(count($this->values), $nodeCount);
+    }
 }
 
 $LinkedListPartitionerTest = new LinkedListPartitionerTest();
 $LinkedListPartitionerTest->setUp();
 $LinkedListPartitionerTest->testPartition();
+$LinkedListPartitionerTest->tearDown();
+
+$LinkedListPartitionerTest->setUp();
+$LinkedListPartitionerTest->testPartitionCci();
+$LinkedListPartitionerTest->tearDown();
+
+$LinkedListPartitionerTest->setUp();
+$LinkedListPartitionerTest->testPartitionCci2();
 $LinkedListPartitionerTest->tearDown();
 
 
