@@ -15,7 +15,7 @@ use Cci\Util\Node;
 class LinkedListPartitionerTest extends \PHPUnit\Framework\TestCase {
     protected $linkedList;
     protected $values;
-    protected function setUp(): void {
+    public function setUp(): void {
         $this->values = [ 3, 5, 8, 5, 10, 2, 1 ];
         // build a linked list
         $head = null;
@@ -31,7 +31,7 @@ class LinkedListPartitionerTest extends \PHPUnit\Framework\TestCase {
         }
         $this->linkedList = $head;
     }
-    protected function tearDown(): void {
+    public function tearDown(): void {
         $this->linkedList = null;
         $this->values = null;
     }
@@ -58,8 +58,9 @@ class LinkedListPartitionerTest extends \PHPUnit\Framework\TestCase {
 }
 
 $LinkedListPartitionerTest = new LinkedListPartitionerTest();
-
+$LinkedListPartitionerTest->setUp();
 $LinkedListPartitionerTest->testPartition();
+$LinkedListPartitionerTest->tearDown();
 
 
 
