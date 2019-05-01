@@ -57,4 +57,9 @@ class LinkedListPartitionerTest extends \PHPUnit\Framework\TestCase {
     }
 }
 
+$LinkedListPartitionerTest = new LinkedListPartitionerTest();
+
+$LinkedListPartitionerTest->testPartition();
+
+
 
