@@ -40,7 +40,7 @@ class LinkedListPartitioner {
         while ($node != null) {
                 $next = $node->getNext();
                 $node->setNext(null);
-                if ($node->getData() < x) {
+                if ($node->getData() < $x) {
                         if ($beforeStart == null) {
                                 $beforeStart = $node;
                                 $beforeEnd = $beforeStart;
@@ -79,7 +79,7 @@ class LinkedListPartitioner {
         while ($node != null) {
                 $next = $node->getNext();
                 $node->setNext(null);
-                if ($node->getData() < x) {
+                if ($node->getData() < $x) {
                         if ($beforeStart == null) {
                                 $beforeStart = $node;
                                 $beforeEnd = $beforeStart;
