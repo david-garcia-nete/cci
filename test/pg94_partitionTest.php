@@ -10,10 +10,12 @@ include __DIR__ . '/../vendor/autoload.php';
 
 require_once __DIR__ . '/../examples/pg94_partition.php';
 
+use Cci\Util\Node;
+
 class LinkedListPartitionerTest extends \PHPUnit\Framework\TestCase {
     protected $linkedList;
     protected $values;
-    protected function setUp() {
+    protected function setUp(): void {
         $this->values = [ 3, 5, 8, 5, 10, 2, 1 ];
         // build a linked list
         $head = null;
@@ -29,7 +31,7 @@ class LinkedListPartitionerTest extends \PHPUnit\Framework\TestCase {
         }
         $this->linkedList = $head;
     }
-    protected function tearDown() {
+    protected function tearDown(): void {
         $this->linkedList = null;
         $this->values = null;
     }
