@@ -8,7 +8,7 @@
 
 include __DIR__ . '/../vendor/autoload.php';
 
-require_once __DIR__ . '/../examples/pg91_partition.php';
+require_once __DIR__ . '/../examples/pg94_partition.php';
 
 class LinkedListPartitionerTest extends \PHPUnit\Framework\TestCase {
     protected $linkedList;
