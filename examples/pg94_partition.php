@@ -47,41 +47,25 @@ class LinkedListPartitioner {
     }
     
     public static function partition2(Node $node, $x) {
-        $beforeStart = null;
-        $beforeEnd = null;
-        $afterStart = null;
-        $afterEnd = null;
+        $head = $node;
+        $tail = $node;
 
         /* Partition list */
         while ($node != null) {
                 $next = $node->getNext();
-                $node->setNext(null);
                 if ($node->getData() < $x) {
-                        if ($beforeStart == null) {
-                                $beforeStart = $node;
-                                $beforeEnd = $beforeStart;
-                        } else {
-                                $beforeEnd->setNext($node);
-                                $beforeEnd = $node;
-                        }
+                        /* Insert node at head. */
+                        $node->setNext($head);
+                        $head = $node;
                 } else {
-                        if ($afterStart == null) {
-                                $afterStart = $node;
-                                $afterEnd = $afterStart;
-                        } else {
-                                $afterEnd->setNext($node);
-                                $afterEnd = $node;
-                        }
+                        /* Insert node at tail. */
+                        $tail->setNext($node);
+                        $tail = $node;
                 }	
                 $node = $next;
         }
-
-        /* Merge before list and after list */
-        if ($beforeStart == null) {
-                return $afterStart;
-        }
-
-        $beforeEnd->setNext($afterStart);
-        return $beforeStart;
+        $tail->setNext(null);
+		
+        return $head;
     }
 }

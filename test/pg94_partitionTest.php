@@ -37,7 +37,7 @@ class LinkedListPartitionerTest extends \PHPUnit\Framework\TestCase {
     }
     public function testPartition() {
         $x = 5;
-        $node = LinkedListPartitioner::partitionCci($this->linkedList, $x);
+        $node = LinkedListPartitioner::partition($this->linkedList, $x);
         $beforePartition = true;
         $nodeCount = 0;
         while ($node !== null) {
@@ -57,7 +57,7 @@ class LinkedListPartitionerTest extends \PHPUnit\Framework\TestCase {
     }
     public function testPartition2() {
         $x = 5;
-        $node = LinkedListPartitioner::partitionCci2($this->linkedList, $x);
+        $node = LinkedListPartitioner::partition2($this->linkedList, $x);
         $beforePartition = true;
         $nodeCount = 0;
         while ($node !== null) {
