@@ -2,7 +2,6 @@
 
 include __DIR__ . '/../vendor/autoload.php';
 
-//use Cci\Util\BinaryTreeNodeWithParent;
 require_once __DIR__ . '/Util/BinaryTreeNodeWithParent.php';
 
 class SuccessorNodeFinder {

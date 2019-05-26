@@ -1,10 +1,6 @@
 <?php
 
-namespace Cci\Util;
-
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'BinaryTreeNode.php';
-
-
 
 class BinaryTreeNodeWithParent extends BinaryTreeNode {
     protected $parent;
