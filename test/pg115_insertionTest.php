@@ -21,3 +21,7 @@ class InsertionTest extends \PHPUnit\Framework\TestCase {
     }
 }
 
+$InsertionTest = new InsertionTest();
+
+$InsertionTest->testInsert();
+$InsertionTest->testInsertWithClearRequired();
